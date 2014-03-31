@@ -1,0 +1,26 @@
+<?php
+
+/*
+ * Implements of hook_install().
+ */
+function drupal_angular_seed_tout_install() {
+  $node = new stdClass();
+  $node->type = 'tout';
+  node_object_prepare($node);
+
+  $node->title = 'This is a tout';
+  $node->language = LANGUAGE_NONE;
+  $node->body['und'][0]['value'] = 'shiny!';
+  node_save($node);
+
+  $path = drupal_get_path_alias('node/' . $node->nid);
+
+  variable_set('drupal_angular_seed_touts', array('news_jumbotron' => $node->nid));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function drupal_angular_seed_tout_uninstall() {
+  variable_del('drupal_angular_seed_touts');
+}

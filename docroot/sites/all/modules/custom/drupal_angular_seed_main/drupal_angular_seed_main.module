@@ -1,0 +1,126 @@
+<?php
+/**
+ * @file
+ * Code for the drupal-angular-seed Main feature.
+ */
+
+include_once 'drupal_angular_seed_main.features.inc';
+/**
+ * @file
+ * Main features for drupal-angular-seed.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function drupal_angular_seed_main_menu() {
+  $items['admin/config/drupal-angular-seed'] = array(
+    'title' => 'drupal-angular-seed',
+    'description' => 'Settings related to a drupal-angular-seed front-end.',
+    'position' => 'left',
+    'weight' => -15,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+  );
+
+  $items['admin/config/drupal-angular-seed/site-information'] = array(
+    'title' => 'Site information',
+    'description' => 'Change site name, default front page and allowed content types.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupal_angular_seed_main_information_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'drupal_angular_seed_main.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_createapi_variables().
+ */
+function drupal_angular_seed_main_createapi_variables() {
+  return array(
+    'site-information' => array(
+      'version' => '1.0',
+      'path' => 'site-information.json',
+      'wrapper' => 'variables',
+      'data' => array(
+        'site_name' => 'drupal_angular_seed_site_name',
+        'site_frontpage' => 'drupal_angular_seed_site_frontpage',
+        'touts' => 'drupal_angular_seed_touts',
+        'allowed_content_types' => 'drupal_angular_seed_allowed_content_types',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_createapi_menus().
+ */
+function drupal_angular_seed_main_createapi_menus() {
+  return array(
+    'main-menu' => array(
+      'version' => '1.0',
+      'path' => 'main-menu.json',
+      'wrapper' => 'links',
+      'row' => 'link',
+    ),
+  );
+}
+
+/**
+ * Implements hook_createapi_custom_entities_info().
+ */
+function drupal_angular_seed_main_createapi_custom_entities_info() {
+  return array(
+    'all' => array(
+      'version' => '1.0',
+      'path' => 'nodes.json',
+      'wrapper' => 'nodes',
+      'row' => 'node',
+      'data' => array(
+        'fields' => array(
+          'body' => 'body',
+        ),
+        'properties' => array(
+          'id' => 'nid',
+          'type' => 'type',
+          'title' => 'title',
+        ),
+        'path' => 'path',
+      ),
+      'filters' => array(
+        'properties' => array(
+          'id' => 'nid',
+        ),
+        'path' => 'path',
+      ),
+      'custom_query' => array(
+        'entity_type' => 'node',
+        'nid_alias' => 'nid',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_createapi_custom_entities_query_all().
+ */
+function drupal_angular_seed_main_createapi_custom_entities_query_all() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('status', 1);
+
+  return $query;
+}
+
+/**
+ * Returns a blank page. This is used as a holding page so it can be added to
+ * a Drupal menu. This could also be replaced with a view etc. on the backend.
+ *
+ * @return string
+ */
+function _drupal_angular_seed_main_blank_page() {
+  return '';
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" data-ng-app="myApp" data-ng-controller="SiteCtrl">
+<head>
+  <meta charset="utf-8">
+  <title data-ng-bind="site.name"></title>
+  <link rel="stylesheet" href="/css/app.css"/>
+</head>
+<body>
+
+  <div data-ng-include="site.templates.mainMenu" data-ng-controller="MainMenuCtrl"></div>
+  <div ng-view></div>
+
+  <script src="/lib/angular/angular.js"></script>
+  <script src="/lib/angular/angular-resource.js"></script>
+  <script src="/lib/angular/angular-sanitize.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/services.js"></script>
+  <script src="/js/controllers.js"></script>
+  <script src="/js/filters.js"></script>
+  <script src="/js/directives.js"></script>
+</body>
+</html>

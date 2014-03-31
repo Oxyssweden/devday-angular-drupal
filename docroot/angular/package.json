@@ -1,0 +1,11 @@
+{
+  "name": "drupal-angularjs-seed",
+  "description": "A starter project for Drupal and angular js",
+  "devDependencies": {
+        "phantomjs" : "*",
+        "karma" : "*",
+        "karma-junit-reporter" : "*",    
+        "karma-jasmine" : "*",
+        "karma-ng-scenario" : "*"
+    }
+}

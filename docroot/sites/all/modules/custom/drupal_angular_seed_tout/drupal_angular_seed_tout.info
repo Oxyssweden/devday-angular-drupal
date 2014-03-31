@@ -1,0 +1,14 @@
+name = drupal-angular-seed Tout
+description = Tout content type, feed and configuration
+core = 7.x
+package = drupal-angular-seed
+version = 7.x-1.0
+project = drupal_angular_seed_tout
+dependencies[] = cors
+dependencies[] = createapi
+dependencies[] = drupal_angular_seed_main
+dependencies[] = features
+dependencies[] = text
+features[features_api][] = api:2
+features[field_instance][] = node-tout-body
+features[node][] = tout

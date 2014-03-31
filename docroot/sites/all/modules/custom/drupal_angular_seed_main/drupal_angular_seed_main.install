@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function drupal_angular_seed_main_install() {
+  variable_set('drupal_angular_seed_site_name', 'drupal-angular-seed');
+  variable_set('drupal_angular_seed_allowed_content_types', array('page', 'news_post', 'tout'));
+}
+
+/*
+ * Implements of hook_uninstall().
+ */
+function drupal_angular_seed_main_uninstall() {
+  variable_del('drupal_angular_seed_site_frontpage');
+  variable_del('drupal_angular_seed_site_frontpage');
+  variable_del('drupal_angular_seed_allowed_content_types');
+}

@@ -1,0 +1,53 @@
+<?php
+/**
+ * @file
+ * Code for the drupal-angular-seed Tout feature.
+ */
+
+include_once 'drupal_angular_seed_tout.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function drupal_angular_seed_tout_menu() {
+  $items['admin/config/drupal-angular-seed/touts'] = array(
+    'title' => 'Touts',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupal_angular_seed_tout_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'drupal_angular_seed_tout.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_createapi_content_types().
+ */
+function drupal_angular_seed_tout_createapi_content_types() {
+  return array(
+    'tout' => array(
+      'version' => '1.0',
+      'path' => 'touts.json',
+      'wrapper' => 'touts',
+      'row' => 'tout',
+      'data' => array(
+        'properties' => array(
+          'id' => 'nid',
+          'title' => 'title',
+          'created' => 'created',
+        ),
+        'fields' => array(
+          'body' => 'body',
+        ),
+        'path' => 'path',
+      ),
+      'filters' => array(
+        'properties' => array(
+          'id' => 'nid',
+        ),
+        'path' => 'path',
+      ),
+    ),
+  );
+}

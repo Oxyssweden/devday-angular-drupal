@@ -1,0 +1,19 @@
+<?php
+
+/*
+ * Implementation of hook_install().
+ */
+function drupal_angular_seed_page_install() {
+  $node = new stdClass();
+  $node->type = 'page';
+  node_object_prepare($node);
+
+  $node->title = 'Home Page';
+  $node->language = LANGUAGE_NONE;
+  $node->body['und'][0]['value'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim magna sit amet pharetra vehicula. Pellentesque placerat nulla vitae arcu pretium euismod. Pellentesque aliquet nec enim rutrum consectetur. Vestibulum nibh orci, faucibus ac tempor quis, gravida vel magna. Aenean posuere ligula nec metus accumsan cursus. Sed congue porta purus, sed blandit nisl molestie vel. Sed porta odio id nulla convallis fringilla. Vestibulum accumsan congue diam non molestie. Ut at eros sit amet purus commodo mollis eget in mi.';
+  node_save($node);
+
+  $path = drupal_get_path_alias('node/' . $node->nid);
+
+  variable_set('drupal_angular_seed_site_frontpage', $path);
+}

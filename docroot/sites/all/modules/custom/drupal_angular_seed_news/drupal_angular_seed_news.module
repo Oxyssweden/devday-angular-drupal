@@ -1,0 +1,61 @@
+<?php
+/**
+ * @file
+ * Code for the drupal-angular-seed News feature.
+ */
+
+include_once 'drupal_angular_seed_news.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function drupal_angular_seed_news_menu() {
+  $items['news'] = array(
+    'title' => 'News',
+    'page callback' => '_drupal_angular_seed_main_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_createapi_content_types().
+ */
+function drupal_angular_seed_news_createapi_content_types() {
+  return array(
+    'news_post' => array(
+      'version' => '1.0',
+      'path' => 'news.json',
+      'wrapper' => 'posts',
+      'row' => 'post',
+      'data' => array(
+        'properties' => array(
+          'id' => 'nid',
+          'title' => 'title',
+          'created' => 'created',
+        ),
+        'fields' => array(
+          'body' => 'body',
+          'image' => array(
+            'field_news_image' => array(
+              'styles' => array(
+                'thumbnail' => 'thumbnail',
+                'medium' => 'medium',
+                'large' => 'large',
+              ),
+            ),
+          ),
+        ),
+        'path' => 'path',
+      ),
+      'filters' => array(
+        'properties' => array(
+          'id' => 'nid',
+        ),
+        'path' => 'path',
+      ),
+    ),
+  );
+}
