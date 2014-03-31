@@ -3,13 +3,20 @@
 <head>
   <meta charset="utf-8">
   <title data-ng-bind="site.name"></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/css/app.css"/>
 </head>
 <body>
 
   <div data-ng-include="site.templates.mainMenu" data-ng-controller="MainMenuCtrl"></div>
-  <div ng-view></div>
-
+  <div class="container">
+    <div ng-view></div>
+  </div>
+  
   <script src="/lib/angular/angular.js"></script>
   <script src="/lib/angular/angular-resource.js"></script>
   <script src="/lib/angular/angular-sanitize.js"></script>
@@ -18,5 +25,10 @@
   <script src="/js/controllers.js"></script>
   <script src="/js/filters.js"></script>
   <script src="/js/directives.js"></script>
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>
