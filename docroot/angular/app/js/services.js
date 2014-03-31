@@ -2,7 +2,7 @@
 
 angular.module('myApp.services', ['ngResource'])
 
-  .value('cms', 'http://cms.seed.local')
+  .value('cms', 'http://angular.dev')
 
   .factory('cmsSiteSettings', ['$resource', 'cms', function($resource, cms) {
     return $resource(cms + '/api/1.0/site-information.json', {}, {
